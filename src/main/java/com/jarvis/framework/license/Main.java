@@ -13,11 +13,17 @@ import java.security.SecureRandom;
  */
 public class Main {
 
-    private static final String KEY = "123";
+    private static final String KEY = "abc";
 
     public static void main(String[] args) {
-        String encrypt = encrypt("{ \"status\": 1, \"enterprise\": \"天\", \"serviceCode\": \"abc\", \"registTime\": \"2024-01-24 14:04:55\", \"mac\": \"DE-53-92-68-47-FA\", \"vaildTime\": \"2024-01-24 14:04:55\" }");
+
+        String json = "{ \"status\": 1, \"enterprise\": \"天\", \"serviceCode\": \"abc\", \"registTime\": \"2024-01-24 14:04:55\", \"mac\": \"DE-53-92-68-47-FA\", \"vaildTime\": \"2024-01-24 14:04:55\" }";
+
+        String encrypt = encrypt(json);
         System.out.println(encrypt);
+        System.out.println("-------------------------");
+        String encrypt1 = AESUtil.encrypt(json, KEY);
+        System.out.println(encrypt1);
     }
 
     public static String encrypt(String content) { try { byte[] bytes = content.getBytes(StandardCharsets.UTF_8);
