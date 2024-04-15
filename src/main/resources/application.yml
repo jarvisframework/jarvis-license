@@ -1,0 +1,65 @@
+server:
+  port: 8080
+  undertow:
+    max-http-post-size: 0
+    threads:
+      io: 4
+      worker: 32
+    buffer-size: 1024
+    direct-buffers: true
+
+spring:
+  profiles:
+    include: upgrade
+    active: dev
+  datasource:
+    url: jdbc:mysql://app.deehero.com:60003/deehero_platform_wcs?characterEncoding=utf8&rewriteBatchedStatements=true&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true
+    username: root
+    password: 123456
+    druid:
+      initial-size: 5
+      max-active: 20
+      validation-query: select 1
+  mvc:
+    format:
+      date: yyyy-MM-dd
+      date-time: yyyy-MM-dd HH:mm:ss
+      time: HH:mm:ss
+  jackson:
+    default-property-inclusion: non_null
+  session:
+    timeout: 1800
+  security:
+    permit-urls:
+      - /doc.html
+      - /webjars/**
+      - /captcha-image
+    deny-urls:
+      - /deny/**
+    authority-urls:
+      - url: /city/**
+        authorities:
+          city,superadmin
+    validate-code:
+      enabled: false
+    permit-access-id: qRTETFKMKzcz3bYHCZcpmqa0Ggm3b80h
+
+snowflake:
+  worker-id: 1
+
+mybatis:
+  mapper-locations:
+    - classpath*:/mapper/*Mapper.xml
+  configuration:
+    jdbc-type-for-null: 'NULL'
+    use-actual-param-name: true
+    map-underscore-to-camel-case: true
+    call-setters-on-nulls: true
+
+springfox:
+  documentation:
+    version: 1.0.0
+    title: Jarvis授权管理系统API文档
+    description: Jarvis授权管理系统API接口文档
+
+
