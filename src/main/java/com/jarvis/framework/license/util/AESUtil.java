@@ -3,7 +3,7 @@
 // (powered by FernFlower decompiler)
 //
 
-package com.jarvis.framework.license;
+package com.jarvis.framework.license.util;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
