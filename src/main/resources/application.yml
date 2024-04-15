@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 1688
   undertow:
     max-http-post-size: 0
     threads:
@@ -10,8 +10,8 @@ server:
 
 spring:
   profiles:
-    include: upgrade
     active: dev
+    include: upgrade
   datasource:
     url: jdbc:mysql://app.deehero.com:60003/deehero_platform_wcs?characterEncoding=utf8&rewriteBatchedStatements=true&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true
     username: root
